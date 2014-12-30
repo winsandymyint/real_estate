@@ -46,7 +46,7 @@ namespace :scraper do
   		#Save Post
   		@post.save!
 
- 	end
+ 	  end
 
   end
 
