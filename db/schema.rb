@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141228151728) do
+ActiveRecord::Schema.define(version: 20141231161703) do
 
   create_table "posts", force: true do |t|
     t.string   "heading"
@@ -20,8 +20,15 @@ ActiveRecord::Schema.define(version: 20141228151728) do
     t.string   "neighborhood"
     t.string   "external_url"
     t.string   "timestamp"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "bedrooms"
+    t.decimal  "bathrooms"
+    t.integer  "sqft"
+    t.string   "cats"
+    t.string   "dogs"
+    t.string   "w_d_in_unit"
+    t.string   "street_parking"
   end
 
 end
