@@ -29,10 +29,10 @@ namespace :scraper do
 
   	#Display the result to screen
   	#puts result
-    #puts result["postings"].first["heading"]["locality"]
+    #puts result["postings"].first["images"].first["full"]
   	#puts JSON.pretty_generate result["postings"]
 
-  	#Store result in database
+  	# #Store result in database
   	result["postings"].each do |posting|
   		#Create new post
   		@post = Post.new
@@ -53,6 +53,14 @@ namespace :scraper do
   		#Save Post
   		@post.save!
 
+
+      #Loop over images and save to database
+      posting["images"].each do |images|
+        @images= Image.new
+        @images.url= images["full"]
+        @images.post_id= @post.id
+        @images.save!
+      end
  	  end
 
   end
