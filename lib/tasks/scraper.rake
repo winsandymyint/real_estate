@@ -70,4 +70,41 @@ namespace :scraper do
     Post.destroy_all
   end
 
+  desc "Save neighborhood code in reference table"
+  task scrap_neighborhoods: :environment do
+    require 'open-uri'
+    require 'json'
+
+    #Set API Token URL
+    auth_token= '2175a04d219673941cbda08192bf3928'
+    location_url= 'http://reference.3taps.com/locations'
+
+    #Specify request parameter
+    params= {
+      auth_token: auth_token,
+      level: "locality", 
+      city: "USA-NYM-BRL"
+    }
+
+    #Prepare API request
+    uri = URI.parse(location_url)
+    uri.query= URI.encode_www_form(params)
+
+    #Sumit request
+    #result= open(uri).read
+    result= JSON.parse(open(uri).read)
+
+    #Display the result to screen
+    #puts result
+
+    # #Store result in database
+    result["locations"].each do |location|
+      #Create new post
+      @location = Location.new
+      @location.code= location["code"]
+      @location.name= location["short_name"]
+      @location.save!
+    end
+  end
+
 end
