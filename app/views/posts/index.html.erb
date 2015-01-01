@@ -7,6 +7,13 @@
     <tr>
       <th>Heading</th>
       <th>Price</th>
+      <th>baths</th>
+      <th>beds</th>
+      <th>Sqft</th>
+      <th>Cats</th>
+      <th>Dogs</th>
+      <th>w_d_in_unit</th>
+      <th>Parking</th>
       <th>Neighborhood</th>
       <th>Timestamp</th>
     </tr>
@@ -18,6 +25,13 @@
       <tr>
         <td><%= post.heading %></td>
         <td><%= number_to_currency(post.price, precision: 0) %></td>
+        <td><%= post.bathrooms %></td>
+        <td><%= post.bedrooms %></td>
+        <td><%= post.sqft %></td>
+        <td><%= post.cats %></td>
+        <td><%= post.dogs %></td>
+        <td><%= post.w_d_in_unit %></td>
+        <td><%= post.street_parking %></td>
         <td><%= post.neighborhood %></td>
         <td><%= "#{time_ago_in_words(Time.at(post.timestamp.to_i))} ago" %></td>
         <td><%= link_to 'Show', post %></td>

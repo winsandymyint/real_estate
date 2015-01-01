@@ -14,6 +14,35 @@
   <strong>Price:</strong>
   <%= @post.price %>
 </p>
+<p>
+  <strong>bathrooms:</strong>
+  <%= @post.bathrooms %>
+</p>
+
+<p>
+  <strong>bedrooms:</strong>
+  <%= @post.bedrooms %>
+</p>
+
+<p>
+  <strong>cats:</strong>
+  <%= @post.cats %>
+</p>
+
+<p>
+  <strong>dogs:</strong>
+  <%= @post.dogs %>
+</p>
+
+<p>
+  <strong>Unit:</strong>
+  <%= @post.w_d_in_unit %>
+</p>
+
+<p>
+  <strong>Stree Parking:</strong>
+  <%= @post.street_parking %>
+</p>
 
 <p>
   <strong>Neighborhood:</strong>
@@ -29,6 +58,7 @@
   <strong>Timestamp:</strong>
   <%= @post.timestamp %>
 </p>
+
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
