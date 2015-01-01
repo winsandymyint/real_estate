@@ -40,7 +40,7 @@ namespace :scraper do
   		@post.body= posting["body"]
   		@post.price= posting["price"]
   		@post.price= posting["price"]
-  		@post.neighborhood= posting["location"]["locality"]
+  		@post.neighborhood= Location.find_by(code: posting["location"]["locality"]).try(:name)
   		@post.external_url= posting["external_url"]
   		@post.timestamp= posting["timestamp"]
       @post.bedrooms = posting["annotations"]["bedrooms"] if posting["annotations"]["bedrooms"].present?
