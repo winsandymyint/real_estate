@@ -3,6 +3,11 @@ class PostsController < ApplicationController
 
   # GET /posts
   # GET /posts.json
+
+  def home  
+
+  end
+
   def index
     #@posts = Post.all
     @posts= Post.paginate(:page => params[:page], :per_page => 30)

@@ -1,3 +1,32 @@
-// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.center {
+  text-align: center;
+}
+
+.jumbotron {
+  background-image: url('https://s3-ap-southeast-1.amazonaws.com/craigslist-scraper/images/img02.jpg');
+  height: 800px;
+  margin: 0px;
+  background-position: center;
+  h1 {
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow: 0px 2px 3px #555;
+  }
+  h2 {
+    color: #fff;
+    text-shadow: 0px 2px 3px #555;
+    margin-bottom: 80px;
+  }
+  .container {
+    padding: 80px 0px;
+  }
+}
+
+.filter {
+  background-color: rgba(215,226,241,0.7);
+  padding: 20px 30px 10px 30px;
+  border-radius: 10px;
+}
