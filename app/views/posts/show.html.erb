@@ -1,71 +1,59 @@
 <p id="notice"><%= notice %></p>
 
 <div class="container">
-<p>
-  <strong>Heading:</strong>
-  <%= @post.heading %>
-</p>
+  <div class="header">
+    <p>
+      <h3><%= @post.heading %></h3>
+    </p>
 
-<p>
-  <strong>Body:</strong>
-  <%= @post.body %>
-</p>
+    <p>
+      <strong>External url:</strong>
+      <%= @post.external_url %>
+    </p>
+  </div>
+  <div class="row">
+    <div class="col-md-7">
+      <% @images.each do |image| %>
+        <%= image_tag image.url, class: "thumbnail"%>
+      <% end %>
+    </div>
+    <div class="col-md-5">
+      Price: <%= number_to_currency(@post.price, precision: 0) %><br />
+      Last Updated<%= "#{time_ago_in_words(Time.at(@post.timestamp.to_i))} ago" %><br />
+      <% if @post.neighborhood.present? %>
+        <%= @post.neighborhood %><br />
+      <% end %>
 
-<p>
-  <strong>Price:</strong>
-  <%= @post.price %>
-</p>
-<p>
-  <strong>bathrooms:</strong>
-  <%= @post.bathrooms %>
-</p>
+      <% if @post.bedrooms.present? %>
+        Bedrooms: <%= @post.bedrooms %><br />
+      <% end %>
 
-<p>
-  <strong>bedrooms:</strong>
-  <%= @post.bedrooms %>
-</p>
+      <% if @post.bathrooms.present? %>
+        Bathrooms: <%= @post.bathrooms %><br />
+      <% end %>
 
-<p>
-  <strong>cats:</strong>
-  <%= @post.cats %>
-</p>
+      <% if @post.sqft.present? %>
+        Square Footage: <%= @post.sqft %>
+      <% end %>
 
-<p>
-  <strong>dogs:</strong>
-  <%= @post.dogs %>
-</p>
+      <% if @post.cats.present? %>
+        Cats: <%= @post.cats %>
+      <% end %>
 
-<p>
-  <strong>Unit:</strong>
-  <%= @post.w_d_in_unit %>
-</p>
+      <% if @post.dogs.present? %>
+        Dogs: <%= @post.dogs %>
+      <% end %>
 
-<p>
-  <strong>Stree Parking:</strong>
-  <%= @post.street_parking %>
-</p>
+      <% if @post.w_d_in_unit.present? %>
+        <%= @post.w_d_in_unit %>
+      <% end %>
 
-<p>
-  <strong>Neighborhood:</strong>
-  <%= @post.neighborhood %>
-</p>
-
-<p>
-  <strong>External url:</strong>
-  <%= @post.external_url %>
-</p>
-
-<p>
-  <strong>Timestamp:</strong>
-  <%= @post.timestamp %>
-</p>
-
-<% @images.each do |image| %>
-  <%= image_tag image.url, class: "thumbnail"%>
-  <% end %>
-
-
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+      <% if @post.street_parking.present? %>
+        <%= @post.street_parking %>
+      <% end %>
+      <p>
+        <%= @post.body %>
+      </p>
+    </div>
+  </div>
 </div>
