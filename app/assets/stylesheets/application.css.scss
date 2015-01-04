@@ -10,7 +10,7 @@
   height: 800px;
   margin: 0px;
   background-position: center;
-  
+
   h1 {
     text-transform: uppercase;
     color: #fff;
@@ -30,4 +30,15 @@
   background-color: rgba(215,226,241,0.7);
   padding: 20px 30px 10px 30px;
   border-radius: 10px;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #d7e2f1;
+}
+
+tbody {
+  .thumbnail {
+    width: 100%;
+    height: 100%;
+  }
 }

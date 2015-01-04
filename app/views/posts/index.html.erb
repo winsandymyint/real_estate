@@ -1,6 +1,63 @@
 <p id="notice"><%= notice %></p>
-
-
 <div class="container">
   <%= render 'filter' %>
-</div>
+   <% if @posts.empty? %>
+   <hr>
+   <h3>No results found</h3>
+ <% else %>
+   <table class="table tablehover tablecondensed">
+     <thead>
+       <tr>
+         <th class="center">Preview</th>
+         <th class="center">Heading</th>
+         <th class="center">Price</th>
+         <th class="center">baths</th>
+         <th class="center">beds</th>
+         <th class="center">Neighborhood</th>
+         <th class="center">Timestamp</th> 
+         <!-- 
+         <th class="center">Sqft</th>
+         <th class="center">Cats</th>
+         <th class="center">Dogs</th>
+         <th class="center">w_d_in_unit</th>
+         <th class="center">Parking</th>
+       -->
+       </tr>
+     </thead>
+     <tbody>
+
+       <% @posts.each do |post| %>
+
+         <tr>
+           <td width="13%" height="120px">
+            <% if post.images.empty? %>
+              <%= image_tag 'https://s3-ap-southeast-1.amazonaws.com/craigslist-scraper/images/no-photo-available.jpg', class: "thumbnail" %>
+            <% else %>
+              <%= image_tag post.images.first.url   , class: "thumbnail" %>
+            <% end %> 
+           </td>
+           <td style="vertical-align:middle"><%= link_to post.heading, post %></td>
+           <td class="center" style="vertical-align:middle"><%= number_to_currency(post.price, precision: 0) %></td>
+           <td class="center" style="vertical-align:middle"><%= post.bedrooms %></td>
+           <td class="center" style="vertical-align:middle"><%= post.bathrooms %></td>
+           <td class="center" style="vertical-align:middle"><%= post.neighborhood %></td>
+           <td class="center" style="vertical-align:middle"><%= "#{time_ago_in_words(Time.at(post.timestamp.to_i))} ago" %></td>
+           <!-- <td class="center"><%= post.sqft %></td>
+           <td class="center"><%= post.cats %></td>
+           <td class="center"><%= post.dogs %></td>
+           <td class="center"><%= post.w_d_in_unit %></td>
+           <td class="center"><%= post.street_parking %></td>
+           <td class="center"><%# link_to 'Show', post %></td>
+           <td class="center"><%# link_to 'Edit', edit_post_path(post) %></td>
+           <td class="center"><%# link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+         </tr>
+       <% end %>
+     </tbody>
+   </table>
+
+   <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>  
+   <br>
+   <%= link_to 'New Post', new_post_path %>  
+ <% end %>
+ </div>
+
