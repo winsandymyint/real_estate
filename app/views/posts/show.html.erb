@@ -12,48 +12,56 @@
     </p>
   </div>
   <div class="row">
-    <div class="col-md-7">
-      <% @images.each do |image| %>
-        <%= image_tag image.url, class: "thumbnail"%>
+    <div class="col-md-7" id="post-images">
+      <% if @images.blank? %>
+        <%= image_tag 'https://s3-ap-southeast-1.amazonaws.com/craigslist-scraper/images/no-photo-available.jpg', class: "thumbnail"%>
+      <% else %>
+        <% @images.each do |image| %>
+          <%= image_tag image.url, class: "thumbnail"%>
+        <% end %>
       <% end %>
     </div>
     <div class="col-md-5">
-      Price: <%= number_to_currency(@post.price, precision: 0) %><br />
-      Last Updated<%= "#{time_ago_in_words(Time.at(@post.timestamp.to_i))} ago" %><br />
-      <% if @post.neighborhood.present? %>
-        <%= @post.neighborhood %><br />
-      <% end %>
+      <div class="basic-info">
+        <h4>Basic Info</h4>
+        Price: <%= number_to_currency(@post.price, precision: 0) %><br />
+        Last Updated<%= "#{time_ago_in_words(Time.at(@post.timestamp.to_i))} ago" %><br />
+        <% if @post.neighborhood.present? %>
+          <%= @post.neighborhood %><br />
+        <% end %>
 
-      <% if @post.bedrooms.present? %>
-        Bedrooms: <%= @post.bedrooms %><br />
-      <% end %>
+        <% if @post.bedrooms.present? %>
+          Bedrooms: <%= @post.bedrooms %><br />
+        <% end %>
 
-      <% if @post.bathrooms.present? %>
-        Bathrooms: <%= @post.bathrooms %><br />
-      <% end %>
+        <% if @post.bathrooms.present? %>
+          Bathrooms: <%= @post.bathrooms %><br />
+        <% end %>
 
-      <% if @post.sqft.present? %>
-        Square Footage: <%= @post.sqft %>
-      <% end %>
+        <% if @post.sqft.present? %>
+          Square Footage: <%= @post.sqft %>
+        <% end %>
 
-      <% if @post.cats.present? %>
-        Cats: <%= @post.cats %>
-      <% end %>
+        <% if @post.cats.present? %>
+          Cats: <%= @post.cats %>
+        <% end %>
 
-      <% if @post.dogs.present? %>
-        Dogs: <%= @post.dogs %>
-      <% end %>
+        <% if @post.dogs.present? %>
+          Dogs: <%= @post.dogs %>
+        <% end %>
 
-      <% if @post.w_d_in_unit.present? %>
-        <%= @post.w_d_in_unit %>
-      <% end %>
+        <% if @post.w_d_in_unit.present? %>
+          <%= @post.w_d_in_unit %>
+        <% end %>
 
-      <% if @post.street_parking.present? %>
-        <%= @post.street_parking %>
-      <% end %>
-      <p>
-        <%= @post.body %>
-      </p>
+        <% if @post.street_parking.present? %>
+          <%= @post.street_parking %>
+        <% end %>
+
+      </div>  
+      <div class="description">
+        <h5><%= @post.body %></h5>
+      </div>
     </div>
   </div>
 </div>

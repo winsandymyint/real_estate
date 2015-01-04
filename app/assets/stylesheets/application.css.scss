@@ -42,3 +42,23 @@ tbody {
     height: 100%;
   }
 }
+
+.basic-info, .description{
+	background-color: #e3e3e3;
+	border-color: #bacde6;
+	border-radius: 5px;	
+	padding: 20px;
+	margin: 30px 0px;
+}
+
+#post-images{
+	padding-top: 30px;	
+	border-right: 1px dotted #e3e3e3;
+	.thumbnail{
+		max-width: 100%;
+	}
+}
+
+.header{
+	border-bottom: 1px dotted #e3e3e3;
+}
