@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150101165517) do
+ActiveRecord::Schema.define(version: 20150104112824) do
+
+  create_table "anchors", force: true do |t|
+    t.string   "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "images", force: true do |t|
     t.text     "url"

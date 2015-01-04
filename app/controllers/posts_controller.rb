@@ -10,7 +10,7 @@ class PostsController < ApplicationController
 
   def index
     #@posts = Post.all
-    @posts= Post.paginate(:page => params[:page], :per_page => 30)
+    @posts= Post.order("timestamp desc").paginate(:page => params[:page], :per_page => 30)
     @posts= @posts.where(bedrooms: params["bedrooms"]) if params["bedrooms"].present?
     @posts= @posts.where(bathrooms: params["bathrooms"]) if params["bathrooms"].present?
     @posts= @posts.where(neighborhood: params["neighborhood"]) if params["neighborhood"].present?
