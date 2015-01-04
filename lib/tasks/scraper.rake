@@ -115,4 +115,13 @@ namespace :scraper do
     end
   end
 
+  desc "Discard Old Data"
+  task discard_old_data: :environment do
+    Post.all.each do |post|
+      if post.created_at < 6.hours.ago
+        Post.destroy
+      end
+
+    end
+  end
 end
